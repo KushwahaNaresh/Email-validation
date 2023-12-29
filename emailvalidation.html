@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        form {
+            width: 320px;
+            margin: 0 auto;
+
+        }
+
+        fieldset {
+            padding: 10px;
+        }
+        span{
+               display: block;
+               color:red;
+               margin:0.3rem;
+        }
+
+        input:valid {
+            border:10px solid green;
+        }
+        input:invalid {
+            border:10px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="./welcome.html" method="post" onsubmit="return validation()">
+        <fieldset>
+            <legend>
+                Email validation
+            </legend>
+            <label for="email">
+                Email:
+                <input type="text" id="email" name="email" />
+                <span id="espan"></span>
+            </label>
+
+            <button type="submit" id="sub" > Submit </button>
+        </fieldset>
+    </form>
+
+    <script>
+
+ let validation = function (){
+    let span = document.querySelectorAll('span');
+    let email = document.getElementById('email').value;
+    // let form = document.querySelector("form")
+
+   
+
+        
+if(email == ""){
+    span[0].innerText = "Warning! email cannot be empty...";
+    // console.log(span[0].innerText);
+    return false;
+    }
+else if(email.indexOf('@')<=1){
+      span[0].innerText = "Warning! invalid email...";
+    //   console.log(span[0].innerText);
+      return false; 
+             }
+
+else if(email.charAt(email.length-4) != '.' && email.charAt(email.length-3) != '.'){
+            span[0].innerText = "Warning! invalid email...";
+            // console.log(span[0].innerText);
+            return false; 
+        }
+else{
+                span[0].innerText = "Valid email";
+                span[0].style.color = 'green';
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
